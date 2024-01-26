@@ -6,6 +6,14 @@ int *solve (){
     return b;
 }
 int main(){
-    cout << *solve() << endl;
+    // cout << *solve() << endl;
+    // string s = "hello";
+    // int a = 10;
+    // cout << s.length() << endl;
+    // cout << max(s.length(), a) << endl;
+    string s = "bharat" ;
+    string b = "bh";
+    size_t index = s.find(b) ;
+    cout << index  ;
     return 0;
 }
