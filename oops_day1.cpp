@@ -7,6 +7,8 @@ private:
     int rollNo;
     int age;
     string grade;
+
+    
     // setter
 public:
     void setName(string name)
@@ -24,6 +26,21 @@ public:
     void setGrade(string grade)
     {
         this->grade = grade;
+    }
+
+
+    // getter 
+    string getName (){
+        return name;
+    }
+    int getRollNo(){
+        return rollNo;
+    }
+    int getAge  (){
+        return age;
+    }
+    string getGrade(){
+        return grade;
     }
 };
 int main()
