@@ -7,6 +7,19 @@ class Student
     int rollNo;
     int age;
     string grade;
+    // setter 
+    void setName (string name){
+        this->name = name; 
+    }
+    void setRollNo(int rollNo){
+        this->rollNo = rollNo;
+    }
+    void setAge(int age){
+        this->age = age;
+    }
+    void setGrade(string grade){
+        this->grade = grade;
+    }
 };
 int main()
 {
