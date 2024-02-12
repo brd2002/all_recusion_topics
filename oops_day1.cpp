@@ -8,12 +8,17 @@ private:
     int age;
     string grade;
 
-    
+
     // setter
 public:
     void setName(string name)
     {
-        this->name = name;
+        if (name.size() == 0){
+            cout << "invalide name" << endl;
+        }else{
+             this->name = name;
+        }
+       
     }
     void setRollNo(int rollNo)
     {
@@ -49,5 +54,6 @@ int main()
     s1.setAge(12);
     s1.setGrade("A+");
     s1.setName("Bharat ruidas");
+    cout << s1.getAge() << endl;
     return 0;
 }
