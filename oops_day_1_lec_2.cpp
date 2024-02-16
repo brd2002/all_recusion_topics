@@ -3,6 +3,40 @@
 //
 #include <bits/stdc++.h>
 using namespace std;
+string mostCommonWord(string paragraph, vector<string>& banned) {
+    transform(paragraph.begin() , paragraph.end() , paragraph.begin() , ::tolower);
+    vector<string>all_string ;
+
+    string initial  = "";
+    for (int i = 0 ; i < paragraph.length() ; i++){
+        if (paragraph[i] == ' '){
+            all_string.push_back(initial);
+            initial  = "";
+        }else{
+            initial += paragraph[i];
+        }
+    }
+    initial.pop_back();
+    all_string.push_back(initial);
+    unordered_map<string , int >count_string ;
+    for (int i = 0 ; i < all_string.size() ;i++){
+        count_string[all_string[i]]++;
+    }
+    set<string>s ;
+    for (auto x : banned){
+        s.insert(x);
+    }
+    int maxi = 0 ;
+    string ans = "";
+    for (auto x : count_string){
+        if (s.find(x.first) == s.end()){
+            if (maxi < x.second){
+                ans = x.first;
+            }
+        }
+    }
+    return ans;
+}
 //class  Human {
 //protected:
 //    string name ;
