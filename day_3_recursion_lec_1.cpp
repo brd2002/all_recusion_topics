@@ -11,7 +11,17 @@ void fun (int n ){
     cout << n << " days left" << endl;
     fun(n-1);
 }
+// print n to 1 numbers
+void print(int n){
+    if (n == 1){
+        cout << n << endl;
+        return ;
+    }
+    cout << n << endl;
+    print(n-1);
+}
 int main (){
-    fun(5);
+//    fun(5);
+    print(5) ;
     return 0 ;
 }
