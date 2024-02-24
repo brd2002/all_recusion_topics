@@ -32,6 +32,7 @@ int lastIndex (vector<int>&arr , int x ){
         }
     }
     return last ;
+
 }
 vector<int>findFirstandLastIndex (vector<int>&arr , int x ){
     int firstindex = firstIndex(arr ,x );
@@ -76,12 +77,74 @@ int searchInsertPosition(vector<int>&arr , int target){
     }
     return position ;
 }
-
-int main (){
-    vector<int>arr {1,2,3,4,4,4,5};
-    vector<int>ans = findFirstandLastIndex(arr , 4);
-    for (auto x : ans){
-        cout << x << endl;
+int sqrtofX(int x){
+    int first = 1 , last = x , ans = 1 ;
+    while (first <= last){
+        int mid = first + (last-first)/2 ;
+        if (mid == x/mid ){ // for avoid integer overflow
+            return mid ;
+        }else if (mid> x/mid ){
+            last = mid-1;
+        }else {
+            ans = mid ;
+            first= mid +1;
+        }
     }
+    return ans ;
+}
+int findPeakElement(vector<int>&arr){
+    int start = 0  , end = arr.size()-1;
+    while (start <= end){
+        int mid = start + (end -start )/2;
+        if (arr[mid] > arr[mid-1] && arr[mid] > arr[mid+1])
+            return mid ;
+        else if (arr[mid] > arr[mid-1]) {
+            start = mid+1 ;
+        }else {
+            end = mid-1;
+        }
+    }
+    return -1;
+}
+int findMinRotatedArray(vector<int>&arr , int target){
+    int ans = arr[0] , start = 0 , end = arr.size()-1 ;
+    while (start <= end){
+        int mid = start + (end-start )/2;
+        // left side sorted array
+        if (arr[mid] >= arr[0]){
+            start = mid+1;
+        }
+        // right side sorted array
+        else {
+            ans = arr[mid] ;
+            end = mid-1;
+        }
+    }
+    return ans ;
+}
+int searchInRotatedArray(vector<int>&arr , int target){
+    int  start = 0 , end = arr.size()-1;
+    while (start <= end){
+        int mid = start + (end - start)/2 ;
+        if (arr[mid] == target) return  mid ;
+        else if (arr[0] <= arr[mid]){
+            if (arr[start] <= target  && arr[mid] >= target){
+                end = mid-1 ;
+            }else {
+                start = mid +1 ;
+            }
+        }else{
+            if (arr[mid] <= target && arr[end] >= target){
+                start = mid+1 ;
+            }else {
+                end = mid -1 ;
+            }
+        }
+    }
+    return -1 ;
+}
+int main (){
+
+    cout << sqrtofX(65) << endl;
     return 0 ;
 }
