@@ -42,25 +42,53 @@ vector<int>findFirstandLastIndex (vector<int>&arr , int x ){
     ans.push_back(lastindex);
     return ans;
 }
+bool check_elements(int arr[], int n, int A, int B)
+{
+    // Your code goes here
+    int totalNumbercount = B-A+1 ;
+    set<int>s;
+    int count = 0 ;
+    for (int i = 0 ; i < n ;i++){
+        if (arr[i] >= A && arr[i] <= B){
+            s.insert(arr[i]);
+        }
+    }
+    int len = s.size() ;
+    return totalNumbercount == len ;
+}
+//int lastIndex(string s)
+//{
+////    int last = -1 , start=  0 , end = s.length()-1 ;
+////    while (start <= end){
+////        int mid = start + (end-start)/2 ;
+////        if (s[mid] == '1') {
+////            last = mid ;
+////            start = mid +1 ;
+////        }else if (s[mid] == '0'){
+////            start = mid+1;
+////        }
+////
+////    }
+////    return last;
+//int upperbound = upper_bound(s.begin() , s.end() , '1')-s.begin();
+//if (upperbound == s.length()) return -1 ;
+//else
+//    return upperbound;
+//
+//}
 int lastIndex(string s)
 {
-//    int last = -1 , start=  0 , end = s.length()-1 ;
-//    while (start <= end){
-//        int mid = start + (end-start)/2 ;
-//        if (s[mid] == '1') {
-//            last = mid ;
-//            start = mid +1 ;
-//        }else if (s[mid] == '0'){
-//            start = mid+1;
-//        }
-//
-//    }
-//    return last;
-int upperbound = upper_bound(s.begin() , s.end() , '1')-s.begin();
-if (upperbound == s.length()) return -1 ;
-else
-    return upperbound;
-
+    int n = s.length();
+    int count1 = count(s.begin() , s.end() , '1');
+    for (int i = 0 ; i < n  ;i++){
+        if ((s[i] == '1' )){
+            count1-- ;
+            if (count1== 0){
+                return i ;
+            }
+        }
+    }
+    return -1;
 }
 int searchInsertPosition(vector<int>&arr , int target){
     int position = arr.size() ;
