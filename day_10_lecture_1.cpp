@@ -56,6 +56,7 @@ bool check_elements(int arr[], int n, int A, int B)
     int len = s.size() ;
     return totalNumbercount == len ;
 }
+
 //int lastIndex(string s)
 //{
 ////    int last = -1 , start=  0 , end = s.length()-1 ;
