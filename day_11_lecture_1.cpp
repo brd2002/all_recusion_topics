@@ -19,8 +19,7 @@ int kthMissingPossitiveNumber(vector<int>&arr , int k){
 int bookAllocation(vector<int>&A, int B){
 //    edge case
     if (B > A.size()) return -1 ;
-    long long int end = 0 ;
-    long long int  start ;
+    long long int end = 0 ;    long long int  start ;
     for (int i = 0 ; i < A.size() ; i++){
         end += A[i];
     }
