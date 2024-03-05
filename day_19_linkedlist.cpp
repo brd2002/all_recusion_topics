@@ -23,11 +23,11 @@ Node * insertNode (vector<int>&arr , int index ){
     return temp;
 }
 int main (){
-    Node * head = NULL ;
+//    Node * head = NULL ;
 //    head = new Node(4);
 //Node *tail = NULL;
-vector<int>arr{1,2,3,4,5};
-head = insertNode(arr , 0) ;
+//vector<int>arr{1,2,3,4,5};
+//head = insertNode(arr , 0) ;
 //    for (int i = 0 ; i < arr.size() ; i++){
 //        if (head == NULL){
 //            head = new Node(arr[i]);
@@ -48,10 +48,18 @@ head = insertNode(arr , 0) ;
 //            tail = tail->next;
 //        }
 //    }
-    Node * temp = head;
-    while (temp != NULL){
-        cout << temp->data << endl;
-        temp = temp->next;
-    }
+//    Node * temp = head;
+//    while (temp != NULL){
+//        cout << temp->data << endl;
+//        temp = temp->next;
+//    }
+int a = 10 ;
+int b = 20 ;
+//if (a < b || b < a){
+//    // t and t = true
+//    cout <<"hello" << endl;
+//}else{
+//    cout << "not" << endl;
+//}
     return 0 ;
 }

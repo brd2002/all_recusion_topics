@@ -46,6 +46,8 @@ Node * deleteAnyPosition(Node*head, int pos){
     prev->next = curr->next;
     delete curr;
 }
+//ListNode* reverseList(ListNode* head) {
+//}
 int main (){
     vector<int>arr {1,2,3,4,5};
     Node * head ;
