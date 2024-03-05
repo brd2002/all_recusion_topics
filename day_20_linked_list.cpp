@@ -29,7 +29,23 @@ Node * insertGivenPosition(Node * head , int val , int pos){
     temp->next = temp2;
     return head ;
 }
-// deletions of the node
+// deletions of the node in any position
+Node * deleteAnyPosition(Node*head, int pos){
+    if (pos == 1) {
+        Node * temp = head ;
+        head = temp->next ;
+        delete temp ;
+    }
+    Node *curr = head ;
+    Node *prev = NULL;
+    pos--;
+    while (pos--){
+        prev = curr ;
+        curr = curr->next;
+    }
+    prev->next = curr->next;
+    delete curr;
+}
 int main (){
     vector<int>arr {1,2,3,4,5};
     Node * head ;
