@@ -29,17 +29,37 @@ Node * insertGivenPosition(Node * head , int val , int pos){
     temp->next = temp2;
     return head ;
 }
+// deletions of the node
 int main (){
     vector<int>arr {1,2,3,4,5};
     Node * head ;
     head = createLinkedList(arr , 0 , NULL);
     head = insertGivenPosition(head , 10 , 2);
     head = insertGivenPosition(head , 30 , 3);
+
+    // deletion of the first node
+//    if (head != NULL){
+//        Node * temp1 = head ;
+//        head = temp1->next ;
+//        delete temp1 ;
+//    }
+    // deletion of the last node
+    Node * temp1 = head ;
+    Node * prev ;
+    if (head->next == NULL){
+        head = NULL ;
+    }
+    while (temp1->next != NULL){
+        prev = temp1 ;
+        temp1 = temp1->next ;
+    }
+    delete temp1 ;
+    prev->next = NULL;
+    // completed of the last node delete
     Node * temp = head;
     while (temp!= NULL){
         cout << temp->data << endl;
         temp = temp->next ;
     }
-
     return 0 ;
 }
