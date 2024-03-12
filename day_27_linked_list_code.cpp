@@ -120,7 +120,7 @@ Node *sortedMerge(Node *head1, Node *head2)
             nextNode->next = temp;
             nextNode = nextNode->next;
         }
-        temp1 = temp1->next;
+        temp2 = temp2->next;
     }
     return newHead;
 }
@@ -128,28 +128,158 @@ Node *sortedMerge(Node *head1, Node *head2)
 Node *removeDuplicates(Node *head)
 {
     // your code goes here
-    if (head == NULL) {
+    if (head == NULL)
+    {
         return head;
     }
-    if (head->next == NULL){
+    if (head->next == NULL)
+    {
         return head;
     }
     Node *prev = head;
     Node *curr = head->next;
-    while (curr){
-        if (prev->data == curr->data){
+    while (curr)
+    {
+        if (prev->data == curr->data)
+        {
             prev->next = curr->next;
             delete curr;
             curr = prev->next;
-        }else{
+        }
+        else
+        {
             prev = prev->next;
             curr = curr->next;
         }
     }
     return head;
-
 }
+// Node *segregate(Node *head)
+// {
 
+//     // Add code here
+//     int count_0 = 0, count_1 = 0, count_2 = 0;
+//     Node *curr = head;
+//     while (curr)
+//     {
+//         if (curr->data == 0)
+//             count_0++;
+//         else if (curr->data == 1) count_1++;
+//         else count_2++;
+//         curr = curr->next;
+//     }
+//     head = NULL;
+//     Node *temp ;
+//     while (count_0--){
+//         if (head==NULL){
+//             head = new Node (0);
+//             temp = head;
+//         }else {
+//             Node *temp1 = new Node (0);
+//             temp->next = temp1;
+//             temp = temp->next ; 
+//         }
+//     }
+//      while (count_1--){
+//         if (head==NULL){
+//             head = new Node (1);
+//             temp = head;
+//         }else {
+//             Node *temp1 = new Node (1);
+//             temp->next = temp1;
+//             temp = temp->next ; 
+//         }
+//     }
+//      while (count_2--){
+//         if (head==NULL){
+//             head = new Node (2);
+//             temp = head;
+//         }else {
+//             Node *temp1 = new Node (2);
+//             temp->next = temp1;
+//             temp = temp->next ; 
+//         }
+//     }
+//     return head;
+// }
+Node* segregate(Node *head) {
+        
+        // Add code here
+        Node * head_1 = NULL ;
+        Node * temp_1 ;
+        Node * head_2 = NULL;
+        Node * temp_2 ;
+        Node * head_0 = NULL;
+        Node * temp_0 ;
+        Node *curr = head;
+        while (curr){
+            if (curr->data == 0){
+                if (head_0 == NULL){
+                    head_0 = new Node (0);
+                    temp_0 = head_0;
+                }else {
+                    Node *temp = new Node (0);
+                    temp_0->next = temp;
+                    temp_0 = temp_0->next ;
+                }
+            }else if (curr->data == 1){
+                 if (head_1== NULL){
+                    head_1 =  new Node (1);
+                    temp_1 =  head_1;
+                }else {
+                    Node *temp = new Node (1);
+                    temp_1->next = temp;
+                    temp_1 = temp_1->next ;
+                }
+            }else {
+                if (head_2== NULL){
+                    head_2 =  new Node (2);
+                    temp_2 =  head_2;
+                }else {
+                    Node *temp = new Node (2);
+                    temp_2->next = temp;
+                    temp_2 = temp_2->next ;
+                }
+            }
+            curr = curr->next;
+        }
+        Node * newHead ;
+        if (head_0 == NULL){
+            if (head_1 == NULL){
+                if (head_2==NULL){
+                    return NULL ;
+                }else {
+                    newHead = head_2;
+                }
+            }else {
+                if (head_2 == NULL){
+                    newHead = head_1;
+                }else {
+                    temp_1->next = head_2;
+                    newHead = head_1;
+                }
+            }
+        }else {
+            if (head_1 == NULL){
+                if (head_2 == NULL){
+                    newHead = head_0;
+                }else {
+                    temp_0->next = head_2;
+                    newHead = head_0;
+                }
+            }else {
+                if (head_2 == NULL){
+                    temp_0->next = head_1;
+                    newHead = head_0;
+                }else {
+                    temp_0->next = head_1;
+                    temp_1->next = head_2 ;
+                    newHead = head_0;
+                }
+            }
+        }
+        return newHead;
+    }
 int main()
 {
     Node *head = NULL;
