@@ -19,9 +19,15 @@ void printEvenUsingRecursion(int numbers){
         cout << "even number " << numbers << endl;
     }
 }
+// factorial of a number 
+int factorial (int number){
+    if (number <= 1) return number ;
+    return number * factorial(number-1);
+}
 int main()
 {
     // fun(10);
-    printEvenUsingRecursion(10) ;
+    // printEvenUsingRecursion(10) ;
+    cout << factorial(5) << endl;
     return 0;
 }
