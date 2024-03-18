@@ -50,6 +50,13 @@ int countVowel(string &s, int index)
         return countVowel(s , index+1);
     }
 }
+void  reverseString(string &s, int start, int end)
+{
+    if (start >= end)
+        return ;
+    swap(s[start] , s[end]);
+    reverseString(s , start+1 , end-1);
+}
 int main()
 {
     // int result = fibonacci(1);
@@ -59,5 +66,7 @@ int main()
     // cout << maxelement(arr , 0);
     string a = "bharat ruidas";
     // cout << checkPalindrom(a, 0, a.length() - 1);
-    cout << countVowel(a , 0) << endl;
+    // cout << countVowel(a , 0) << endl;
+    reverseString(a , 0 , a.length()-1) ;
+    cout << a << endl;
 }
