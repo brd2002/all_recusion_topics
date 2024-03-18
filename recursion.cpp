@@ -57,6 +57,20 @@ void  reverseString(string &s, int start, int end)
     swap(s[start] , s[end]);
     reverseString(s , start+1 , end-1);
 }
+int linearSearch(vector<int>&arr , int x , int index ){
+    if (index == arr.size()) return -1;
+    if (arr[index] == x ) return index ;
+    return linearSearch(arr , x , index+1);
+}
+int binarySearch (vector<int>&arr , int start , int end , int x ){
+    if (start > end) return -1 ;
+    int mid = start + (end-start)/2;
+    if (arr[mid] == x ) return mid ;
+    else if (arr[mid] > x){
+        return binarySearch(arr , start , mid-1 , x );
+    }else 
+    return binarySearch(arr , mid+1 , end , x ) ;
+}
 int main()
 {
     // int result = fibonacci(1);
@@ -67,6 +81,9 @@ int main()
     string a = "bharat ruidas";
     // cout << checkPalindrom(a, 0, a.length() - 1);
     // cout << countVowel(a , 0) << endl;
-    reverseString(a , 0 , a.length()-1) ;
-    cout << a << endl;
+    // reverseString(a , 0 , a.length()-1) ;
+    // cout << a << endl;
+    vector<int>arr{1,2,3,4,5,10} ;
+    int x = 10 ; 
+    cout << linearSearch(arr ,x , 0 );
 }
