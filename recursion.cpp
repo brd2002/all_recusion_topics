@@ -157,7 +157,7 @@ void printArray(vector<int> &arr, int n){
     }
     cout << endl;
 }
-void printAllsubSequences(string &s , int index , string output){
+void printAllsubSequences(string &s , int index , string &output){
     if (index == s.length()){
         cout << output << endl ;
         return ;
@@ -165,6 +165,7 @@ void printAllsubSequences(string &s , int index , string output){
     printAllsubSequences(s , index + 1, output);
     output += s[index];
     printAllsubSequences(s , index + 1, output);
+    output.pop_back();
 }
 int main()
 {
@@ -185,5 +186,6 @@ int main()
     // quicksort(arr, 0, arr.size()-1);
     // printArray(arr, arr.size());
     string a = "abc" ;
-    printAllsubSequences(a , 0, "");
+    string output = "";
+    printAllsubSequences(a , 0, output);
 }
