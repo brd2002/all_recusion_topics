@@ -167,6 +167,22 @@ void printAllsubSequences(string &s , int index , string &output){
     printAllsubSequences(s , index + 1, output);
     output.pop_back();
 }
+void generateAllsubSequences(int n , int left , int right , string &output){
+    if (left+right== 2*n){
+        cout << output << endl ;
+        return ;
+    }
+    if (left < n){
+        output.push_back('(');
+        generateAllsubSequences(n , left+1, right, output);
+        output.pop_back();
+    }
+    if(right < left){
+        output.push_back(')');
+        generateAllsubSequences(n , left, right+1, output);
+        output.pop_back();
+    }
+}
 int main()
 {
     
@@ -188,4 +204,7 @@ int main()
     // string a = "abc" ;
     // string output = "";
     // printAllsubSequences(a , 0, output);
+    int n = 3 ;
+    string output = "";
+    generateAllsubSequences(n , 0, 0,output);
 }
