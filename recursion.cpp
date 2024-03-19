@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 int fibonacci(int n)
 {
@@ -100,7 +100,6 @@ void merge(vector<int> &arr, int start, int mid, int end)
             right++;
         }
     }
-    
 
     while (left <= mid)
     {
@@ -113,98 +112,121 @@ void merge(vector<int> &arr, int start, int mid, int end)
         temp[index] = arr[right];
         index++;
         right++;
-        
     }
     index = 0;
     while (start <= end)
     {
-        arr[start] = temp [index] ;
-        start++ ;
+        arr[start] = temp[index];
+        start++;
         index++;
     }
 }
 void margesort(vector<int> &arr, int start, int end)
 {
-    if (start ==  end)
+    if (start == end)
         return;
     int mid = start + (end - start) / 2;
     margesort(arr, start, mid);
     margesort(arr, mid + 1, end);
     merge(arr, start, mid, end);
 }
-int partition(vector<int> &arr, int start, int end){
-    int pos = start ;
-        for (int i = start ; i <= end ; i++){
-        if (arr[i] <= arr[end]){
+int partition(vector<int> &arr, int start, int end)
+{
+    int pos = start;
+    for (int i = start; i <= end; i++)
+    {
+        if (arr[i] <= arr[end])
+        {
             swap(arr[i], arr[pos]);
             pos++;
-            }
+        }
     }
-    return pos-1 ;
+    return pos - 1;
 }
 
-void quicksort(vector<int> &arr, int start, int end){
+void quicksort(vector<int> &arr, int start, int end)
+{
     if (start >= end)
-        return ;
+        return;
     int pos = partition(arr, start, end);
-    quicksort(arr, start, pos-1);
-    quicksort(arr, pos+1, end);
+    quicksort(arr, start, pos - 1);
+    quicksort(arr, pos + 1, end);
 }
 
-void printArray(vector<int> &arr, int n){
-    for (int i = 0; i < n ; i++){
+void printArray(vector<int> &arr, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
         cout << arr[i] << " ";
     }
     cout << endl;
 }
-void printAllsubSequences(string &s , int index , string &output){
-    if (index == s.length()){
-        cout << output << endl ;
-        return ;
+void printAllsubSequences(string &s, int index, string &output)
+{
+    if (index == s.length())
+    {
+        cout << output << endl;
+        return;
     }
-    printAllsubSequences(s , index + 1, output);
+    printAllsubSequences(s, index + 1, output);
     output += s[index];
-    printAllsubSequences(s , index + 1, output);
+    printAllsubSequences(s, index + 1, output);
     output.pop_back();
 }
-void generateAllsubSequences(int n , int left , int right , string &output){
-    if (left+right== 2*n){
-        cout << output << endl ;
-        return ;
+void generateAllsubSequences(int n, int left, int right, string &output)
+{
+    if (left + right == 2 * n)
+    {
+        cout << output << endl;
+        return;
     }
-    if (left < n){
+    if (left < n)
+    {
         output.push_back('(');
-        generateAllsubSequences(n , left+1, right, output);
+        generateAllsubSequences(n, left + 1, right, output);
         output.pop_back();
     }
-    if(right < left){
+    if (right < left)
+    {
         output.push_back(')');
-        generateAllsubSequences(n , left, right+1, output);
+        generateAllsubSequences(n, left, right + 1, output);
         output.pop_back();
     }
+}
+void printsubsetsum(vector<int> &arr, int index, int sum, vector<int> &allsum)
+{
+    if (index == arr.size())
+    {
+        allsum.push_back(sum);
+        return;
+    }
+    // le lu
+    sum += arr[index];
+    printsubsetsum(arr, index + 1, sum, allsum);
+    sum -= arr[index];
+    // na lu
+    printsubsetsum(arr, index + 1, sum, allsum);
+}
+bool targetsum(vector<int> &arr, int index, int sum)
+{
+    if (sum == 0)
+        return true;
+    if (sum  < 0 || index == arr.size())
+        return false;
+    return targetsum(arr  , index+1 , sum - arr[index]) || targetsum(arr  , index+1 , sum) ; 
 }
 int main()
 {
-    
-    // int result = fibonacci(1);
-    // cout << result << endl;
-    // cout << gcd(10, 4) << endl;
-    // vector<int>arr {1,4,3,4,9,8,10};
-    // cout << maxelement(arr , 0);
-    // string a = "bharat ruidas";
-    // cout << checkPalindrom(a, 0, a.length() - 1);
-    // cout << countVowel(a , 0) << endl;
-    // reverseString(a , 0 , a.length()-1) ;
-    // cout << a << endl;
-    // vector<int> arr{1, 2, 3, 4, 5, 10 , 4, 6, 9 , 90 , 10 , 14 , 80};
-    // int x = 10;
-    // cout << linearSearch(arr, x, 0);
-    // quicksort(arr, 0, arr.size()-1);
-    // printArray(arr, arr.size());
-    // string a = "abc" ;
-    // string output = "";
-    // printAllsubSequences(a , 0, output);
-    int n = 3 ;
-    string output = "";
-    generateAllsubSequences(n , 0, 0,output);
+
+    // vector<int> arr{3, 4, 5};
+    // int sum = 0;
+    // vector<int> allsum;
+    // printsubsetsum(arr, 0, sum, allsum);
+    // for (auto x : allsum)
+    // {
+    //     cout << x << endl;
+    // }
+    vector<int>arr {1,2,3} ;
+    int sum = 10  ; 
+    cout << targetsum(arr , 0 , sum ) << endl;
 }
