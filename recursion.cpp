@@ -157,21 +157,33 @@ void printArray(vector<int> &arr, int n){
     }
     cout << endl;
 }
+void printAllsubSequences(string &s , int index , string output){
+    if (index == s.length()){
+        cout << output << endl ;
+        return ;
+    }
+    printAllsubSequences(s , index + 1, output);
+    output += s[index];
+    printAllsubSequences(s , index + 1, output);
+}
 int main()
 {
+    
     // int result = fibonacci(1);
     // cout << result << endl;
     // cout << gcd(10, 4) << endl;
     // vector<int>arr {1,4,3,4,9,8,10};
     // cout << maxelement(arr , 0);
-    string a = "bharat ruidas";
+    // string a = "bharat ruidas";
     // cout << checkPalindrom(a, 0, a.length() - 1);
     // cout << countVowel(a , 0) << endl;
     // reverseString(a , 0 , a.length()-1) ;
     // cout << a << endl;
-    vector<int> arr{1, 2, 3, 4, 5, 10 , 4, 6, 9 , 90 , 10 , 14 , 80};
+    // vector<int> arr{1, 2, 3, 4, 5, 10 , 4, 6, 9 , 90 , 10 , 14 , 80};
     // int x = 10;
     // cout << linearSearch(arr, x, 0);
-    quicksort(arr, 0, arr.size()-1);
-    printArray(arr, arr.size());
+    // quicksort(arr, 0, arr.size()-1);
+    // printArray(arr, arr.size());
+    string a = "abc" ;
+    printAllsubSequences(a , 0, "");
 }
