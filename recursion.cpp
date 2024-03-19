@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 int fibonacci(int n)
 {
@@ -100,6 +100,7 @@ void merge(vector<int> &arr, int start, int mid, int end)
             right++;
         }
     }
+    
 
     while (left <= mid)
     {
@@ -112,8 +113,9 @@ void merge(vector<int> &arr, int start, int mid, int end)
         temp[index] = arr[right];
         index++;
         right++;
+        
     }
-    int index = 0;
+    index = 0;
     while (start <= end)
     {
         arr[start] = temp [index] ;
@@ -130,6 +132,31 @@ void margesort(vector<int> &arr, int start, int end)
     margesort(arr, mid + 1, end);
     merge(arr, start, mid, end);
 }
+int partition(vector<int> &arr, int start, int end){
+    int pos = start ;
+        for (int i = start ; i <= end ; i++){
+        if (arr[i] <= arr[end]){
+            swap(arr[i], arr[pos]);
+            pos++;
+            }
+    }
+    return pos-1 ;
+}
+
+void quicksort(vector<int> &arr, int start, int end){
+    if (start >= end)
+        return ;
+    int pos = partition(arr, start, end);
+    quicksort(arr, start, pos-1);
+    quicksort(arr, pos+1, end);
+}
+
+void printArray(vector<int> &arr, int n){
+    for (int i = 0; i < n ; i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
 int main()
 {
     // int result = fibonacci(1);
@@ -142,7 +169,9 @@ int main()
     // cout << countVowel(a , 0) << endl;
     // reverseString(a , 0 , a.length()-1) ;
     // cout << a << endl;
-    vector<int> arr{1, 2, 3, 4, 5, 10};
-    int x = 10;
-    cout << linearSearch(arr, x, 0);
+    vector<int> arr{1, 2, 3, 4, 5, 10 , 4, 6, 9 , 90 , 10 , 14 , 80};
+    // int x = 10;
+    // cout << linearSearch(arr, x, 0);
+    quicksort(arr, 0, arr.size()-1);
+    printArray(arr, arr.size());
 }
