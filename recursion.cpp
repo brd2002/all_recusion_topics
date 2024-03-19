@@ -185,7 +185,7 @@ int main()
     // cout << linearSearch(arr, x, 0);
     // quicksort(arr, 0, arr.size()-1);
     // printArray(arr, arr.size());
-    string a = "abc" ;
-    string output = "";
-    printAllsubSequences(a , 0, output);
+    // string a = "abc" ;
+    // string output = "";
+    // printAllsubSequences(a , 0, output);
 }
