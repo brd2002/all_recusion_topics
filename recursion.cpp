@@ -218,12 +218,9 @@ bool targetsum(vector<int> &arr, int index, int sum)
     return targetsum(arr  , index+1 , sum - arr[index]) || targetsum(arr  , index+1 , sum) ; 
 }
     int countperfectsum (int arr[] , int index , int n ,int sum){
-        if (index == n ){
-            if (sum == 0 ) return 1; 
-            else 
-            return 0 ;
-        }
-        return countperfectsum(arr , index+1 , n , sum-arr[index]) + 
+        if (sum == 0 ) return 1 ;
+        if (index == n || sum < 0 ) return 0 ;
+        return countperfectsum(arr , index, n , sum-arr[index]) + 
         countperfectsum(arr, index+1 , n , sum) ;
     }
 	int perfectSum(int arr[], int n, int sum)
@@ -244,7 +241,11 @@ int main()
     // {
     //     cout << x << endl;
     // }
-    vector<int>arr {1,2,3} ;
-    int sum = 10  ; 
-    cout << targetsum(arr , 0 , sum ) << endl;
+    // vector<int>arr {1,2,3} ;
+    // int sum = 10  ; 
+    // cout << targetsum(arr , 0 , sum ) << endl;
+    int arr[] = {2,3,4} ;
+    int n = 3 ;
+    int sum = 6 ;
+    cout << perfectSum(arr , n , sum ) << endl;
 }
