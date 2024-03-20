@@ -229,6 +229,22 @@ bool targetsum(vector<int> &arr, int index, int sum)
         return countperfectsum(arr , 0 , n , sum ) ;
         
 	}
+    void printallpermuation(vector<int>&arr ,vector<int>&temp , vector<vector<int>> &ans , vector<int>&visited){
+
+        if (arr.size() == temp.size()){
+            ans.push_back(temp) ;
+            return ;
+        }
+        for (int i = 0 ; i < arr.size() ; i++){
+            if(visited[i] == 0){
+                visited[i] = 1 ; 
+                temp.push_back(arr[i]);
+                printallpermuation(arr , temp  , ans , visited) ;
+                visited[i] = 0 ;
+                temp.pop_back() ;
+            }
+        }
+    }
 	  
 int main()
 {
@@ -244,8 +260,19 @@ int main()
     // vector<int>arr {1,2,3} ;
     // int sum = 10  ; 
     // cout << targetsum(arr , 0 , sum ) << endl;
-    int arr[] = {2,3,4} ;
-    int n = 3 ;
-    int sum = 6 ;
-    cout << perfectSum(arr , n , sum ) << endl;
+    // int arr[] = {2,3,4} ;
+    // int n = 3 ;
+    // int sum = 6 ;
+    // cout << perfectSum(arr , n , sum ) << endl;
+    vector<int>arr{1,2,3} ; 
+    vector<int>temp; 
+    vector<vector<int>> ans ; 
+    vector<int>visited(arr.size() , 0) ;
+    printallpermuation(arr , temp , ans , visited) ;
+    for (int i = 0 ; i < ans.size() ; i++){
+        for (int j = 0 ; j < ans[0].size() ; j++ ){
+            cout << ans[i][j] << " " ;
+        }
+        cout << endl; 
+    }
 }
