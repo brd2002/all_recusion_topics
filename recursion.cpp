@@ -209,43 +209,62 @@ void printsubsetsum(vector<int> &arr, int index, int sum, vector<int> &allsum)
 }
 bool targetsum(vector<int> &arr, int index, int sum)
 {
-    
-    
+
     if (sum == 0)
         return true;
-    if (sum  < 0 || index == arr.size())
+    if (sum < 0 || index == arr.size())
         return false;
-    return targetsum(arr  , index+1 , sum - arr[index]) || targetsum(arr  , index+1 , sum) ; 
+    return targetsum(arr, index + 1, sum - arr[index]) || targetsum(arr, index + 1, sum);
 }
-    int countperfectsum (int arr[] , int index , int n ,int sum){
-        if (sum == 0 ) return 1 ;
-        if (index == n || sum < 0 ) return 0 ;
-        return countperfectsum(arr , index, n , sum-arr[index]) + 
-        countperfectsum(arr, index+1 , n , sum) ;
-    }
-	int perfectSum(int arr[], int n, int sum)
-	{
-        // Your code goes here
-        return countperfectsum(arr , 0 , n , sum ) ;
-        
-	}
-    void printallpermuation(vector<int>&arr ,vector<int>&temp , vector<vector<int>> &ans , vector<int>&visited){
+int countperfectsum(int arr[], int index, int n, int sum)
+{
+    if (sum == 0)
+        return 1;
+    if (index == n || sum < 0)
+        return 0;
+    return countperfectsum(arr, index, n, sum - arr[index]) +
+           countperfectsum(arr, index + 1, n, sum);
+}
+int perfectSum(int arr[], int n, int sum)
+{
+    // Your code goes here
+    return countperfectsum(arr, 0, n, sum);
+}
+void printallpermuation(vector<int> &arr, vector<int> &temp, vector<vector<int>> &ans, vector<int> &visited)
+{
 
-        if (arr.size() == temp.size()){
-            ans.push_back(temp) ;
-            return ;
-        }
-        for (int i = 0 ; i < arr.size() ; i++){
-            if(visited[i] == 0){
-                visited[i] = 1 ; 
-                temp.push_back(arr[i]);
-                printallpermuation(arr , temp  , ans , visited) ;
-                visited[i] = 0 ;
-                temp.pop_back() ;
-            }
+    if (arr.size() == temp.size())
+    {
+        ans.push_back(temp);
+        return;
+    }
+    for (int i = 0; i < arr.size(); i++)
+    {
+        if (visited[i] == 0)
+        {
+            visited[i] = 1;
+            temp.push_back(arr[i]);
+            printallpermuation(arr, temp, ans, visited);
+            visited[i] = 0;
+            temp.pop_back();
         }
     }
-	  
+}
+void permutearray(vector<int> &arr, vector<vector<int>> &ans, int index)
+{
+    if (index == arr.size())
+    {
+        ans.push_back(arr);
+        return;
+    }
+    for (int i = index; i < arr.size(); i++)
+    {
+        swap(arr[i], arr[index]);
+        permutearray(arr, ans, index + 1);
+        swap(arr[i], arr[index]);
+    }
+}
+
 int main()
 {
 
@@ -258,21 +277,23 @@ int main()
     //     cout << x << endl;
     // }
     // vector<int>arr {1,2,3} ;
-    // int sum = 10  ; 
+    // int sum = 10  ;
     // cout << targetsum(arr , 0 , sum ) << endl;
     // int arr[] = {2,3,4} ;
     // int n = 3 ;
     // int sum = 6 ;
     // cout << perfectSum(arr , n , sum ) << endl;
-    vector<int>arr{1,2,3} ; 
-    vector<int>temp; 
-    vector<vector<int>> ans ; 
-    vector<int>visited(arr.size() , 0) ;
-    printallpermuation(arr , temp , ans , visited) ;
-    for (int i = 0 ; i < ans.size() ; i++){
-        for (int j = 0 ; j < ans[0].size() ; j++ ){
-            cout << ans[i][j] << " " ;
+    vector<int> arr{1, 2, 3};
+    vector<int> temp;
+    vector<vector<int>> ans;
+    vector<int> visited(arr.size(), 0);
+    printallpermuation(arr, temp, ans, visited);
+    for (int i = 0; i < ans.size(); i++)
+    {
+        for (int j = 0; j < ans[0].size(); j++)
+        {
+            cout << ans[i][j] << " ";
         }
-        cout << endl; 
+        cout << endl;
     }
 }
