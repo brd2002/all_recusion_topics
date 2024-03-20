@@ -209,12 +209,30 @@ void printsubsetsum(vector<int> &arr, int index, int sum, vector<int> &allsum)
 }
 bool targetsum(vector<int> &arr, int index, int sum)
 {
+    
+    
     if (sum == 0)
         return true;
     if (sum  < 0 || index == arr.size())
         return false;
     return targetsum(arr  , index+1 , sum - arr[index]) || targetsum(arr  , index+1 , sum) ; 
 }
+    int countperfectsum (int arr[] , int index , int n ,int sum){
+        if (index == n ){
+            if (sum == 0 ) return 1; 
+            else 
+            return 0 ;
+        }
+        return countperfectsum(arr , index+1 , n , sum-arr[index]) + 
+        countperfectsum(arr, index+1 , n , sum) ;
+    }
+	int perfectSum(int arr[], int n, int sum)
+	{
+        // Your code goes here
+        return countperfectsum(arr , 0 , n , sum ) ;
+        
+	}
+	  
 int main()
 {
 
