@@ -264,7 +264,17 @@ void permutearray(vector<int> &arr, vector<vector<int>> &ans, int index)
         swap(arr[i], arr[index]);
     }
 }
-
+void towerofHanoi(int n, int source, int help, int destination)
+{
+    if (n == 1)
+    {
+        cout << n << "disk" << source << " to " << destination << endl;
+        return;
+    }
+    towerofHanoi(n - 1, source, destination, help);
+    cout << n << "disk " << source << " to " << destination << endl;
+    towerofHanoi(n - 1, help, source, destination);
+}
 int main()
 {
 
@@ -283,17 +293,17 @@ int main()
     // int n = 3 ;
     // int sum = 6 ;
     // cout << perfectSum(arr , n , sum ) << endl;
-    vector<int> arr{1, 2, 3};
-    vector<int> temp;
-    vector<vector<int>> ans;
-    vector<int> visited(arr.size(), 0);
-    printallpermuation(arr, temp, ans, visited);
-    for (int i = 0; i < ans.size(); i++)
-    {
-        for (int j = 0; j < ans[0].size(); j++)
-        {
-            cout << ans[i][j] << " ";
-        }
-        cout << endl;
-    }
+    // vector<int> arr{1, 2, 3};
+    // vector<int> temp;
+    // vector<vector<int>> ans;
+    // vector<int> visited(arr.size(), 0);
+    // printallpermuation(arr, temp, ans, visited);
+    // for (int i = 0; i < ans.size(); i++)
+    // {
+    //     for (int j = 0; j < ans[0].size(); j++)
+    //     {
+    //         cout << ans[i][j] << " ";
+    //     }
+    //     cout << endl;
+    // }
 }
