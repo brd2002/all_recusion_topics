@@ -1,2 +1,2 @@
-val = raw_input("Enter your value: ") 
+val = input("Enter your value: ") 
 print(val) 

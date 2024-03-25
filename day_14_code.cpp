@@ -59,9 +59,5 @@ void quicksort(vector<int>&arr , int start , int end){
     quicksort(arr , pivot+1 , end);
 }
 int main (){
-    vector<int>arr{9,7,4,3,2,1};
-    quicksort(arr , 0 , arr.size()-1) ;
-    for (auto x : arr){
-        cout << x << endl;
-    }
-}
+    cout << "hello world" << endl;
+   }
