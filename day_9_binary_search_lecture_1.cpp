@@ -19,5 +19,6 @@ int main (){
     vector<int>arr {1,2,3,4};
     int x = 4  ;
     cout << binarySearch(arr , x ) ;
+    int a = 10 ;
     return 0 ;
 }
