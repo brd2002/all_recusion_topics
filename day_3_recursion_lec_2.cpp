@@ -1,7 +1,7 @@
 //
 // Created by bharat on 17-02-2024.
 //
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace  std;
 //factorial of a number
 int factorial (int n ){
@@ -24,6 +24,6 @@ int power(int num , int n){
 int main (){
 //    cout << factorial(0) << endl;
 //cout << sumof(3) << endl;
-cout << power(2, 3) << endl;
+cout << "what is your name tell me" << endl;
     return 0 ;
 }

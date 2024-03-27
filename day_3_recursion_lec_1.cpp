@@ -1,13 +1,14 @@
 //
 // Created by bharat on 17-02-2024.
 //
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace  std;
 void fun (int n ){
     if (n == 0 ) {
         cout << "Happy birthday" << endl;
         return ;
     }
+    string name ="what is your name ? " << endl;
     cout << n << " days left" << endl;
     fun(n-1);
 }
